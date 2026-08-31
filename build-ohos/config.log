@@ -1,0 +1,64 @@
+# QEMU configure log Thu Aug 27 12:24:30 CST 2026
+# Configured with: '/mnt/linux_share/workspace/qemu-inhap/configure' '--target-list=aarch64-softmmu' '--cross-prefix=aarch64-unknown-linux-ohos-' '--disable-werror' '--disable-docs' '--disable-tools' '--disable-guest-agent' '--disable-slirp' '--disable-sdl' '--disable-gtk' '--disable-vnc' '--disable-curses' '--disable-modules' '--disable-kvm' '--disable-hvf' '--disable-whpx' '--disable-multiprocess' '--disable-vfio-user-server' '--disable-seccomp' '--disable-bzip2'
+
+#
+
+funcs: do_compiler do_cc compile_object check_define main
+lines: 119 124 342 351 0
+/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+clang: warning: argument unused during compilation: '-L/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/../../llvm/lib/aarch64-linux-ohos' [-Wunused-command-line-argument]
+
+funcs: do_compiler do_cc compile_object check_define main
+lines: 119 124 342 386 0
+/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+clang: warning: argument unused during compilation: '-L/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/../../llvm/lib/aarch64-linux-ohos' [-Wunused-command-line-argument]
+config-temp/qemu-conf.c:2:2: error: __x86_64__ not defined
+    2 | #error __x86_64__ not defined
+      |  ^
+1 error generated.
+
+funcs: do_compiler do_cc compile_object check_define main
+lines: 119 124 342 392 0
+/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+clang: warning: argument unused during compilation: '-L/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/../../llvm/lib/aarch64-linux-ohos' [-Wunused-command-line-argument]
+config-temp/qemu-conf.c:2:2: error: __sparc__ not defined
+    2 | #error __sparc__ not defined
+      |  ^
+1 error generated.
+
+funcs: do_compiler do_cc compile_object check_define main
+lines: 119 124 342 398 0
+/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+clang: warning: argument unused during compilation: '-L/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/../../llvm/lib/aarch64-linux-ohos' [-Wunused-command-line-argument]
+config-temp/qemu-conf.c:2:2: error: _ARCH_PPC64 not defined
+    2 | #error _ARCH_PPC64 not defined
+      |  ^
+1 error generated.
+
+funcs: do_compiler do_cc compile_object check_define main
+lines: 119 124 342 404 0
+/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+clang: warning: argument unused during compilation: '-L/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/../../llvm/lib/aarch64-linux-ohos' [-Wunused-command-line-argument]
+config-temp/qemu-conf.c:2:2: error: __s390x__ not defined
+    2 | #error __s390x__ not defined
+      |  ^
+1 error generated.
+
+funcs: do_compiler do_cc compile_object check_define main
+lines: 119 124 342 406 0
+/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+clang: warning: argument unused during compilation: '-L/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/../../llvm/lib/aarch64-linux-ohos' [-Wunused-command-line-argument]
+config-temp/qemu-conf.c:2:2: error: __riscv not defined
+    2 | #error __riscv not defined
+      |  ^
+1 error generated.
+
+funcs: do_compiler do_cc compile_object check_define main
+lines: 119 124 342 408 0
+/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+clang: warning: argument unused during compilation: '-L/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/../../llvm/lib/aarch64-linux-ohos' [-Wunused-command-line-argument]
+
+funcs: do_compiler do_cc compile_object main
+lines: 119 124 893 0
+/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/aarch64-unknown-linux-ohos-clang -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+clang: warning: argument unused during compilation: '-L/mnt/linux_share/workspace/commandline-linux-arm64/sdk/default/openharmony/native/llvm/bin/../../llvm/lib/aarch64-linux-ohos' [-Wunused-command-line-argument]

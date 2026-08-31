@@ -381,6 +381,9 @@ option('hexagon_idef_parser', type : 'boolean', value : true,
 option('x86_version', type : 'combo', choices : ['0', '1', '2', '3', '4'], value: '1',
        description: 'tweak required x86_64 architecture version beyond compiler default')
 
+option('libqemu', type: 'feature', value: 'disabled',
+       description: 'Build QEMU system emulator as a loadable shared library (libqemu-system-*.so) for embedding (e.g. dlopen from an OHOS HAP). Default off; the regular executable is still produced.')
+
 option('rust', type: 'feature', value: 'disabled',
        description: 'Rust support')
 option('strict_rust_lints', type: 'boolean', value: false,

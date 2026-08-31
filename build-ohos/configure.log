@@ -1,0 +1,42 @@
+python determined to be '/usr/bin/python3'
+python version: Python 3.11.6
+mkvenv: Creating non-isolated virtual environment at 'pyvenv'
+mkvenv subprocess failed:
+cmd: ['/mnt/linux_share/workspace/qemu-inhap/build-ohos/pyvenv/bin/python3', '-m', 'ensurepip', '--upgrade', '--default-pip']
+returncode: 1
+========== stdout ==========
+Looking in links: /tmp/tmpm6hf0xvn
+Processing /tmp/tmpm6hf0xvn/setuptools-68.0.0-py3-none-any.whl
+Processing /tmp/tmpm6hf0xvn/pip-23.3.1-py3-none-any.whl
+Installing collected packages: setuptools, pip
+ERROR: Could not install packages due to an OSError: [Errno 1] Operation not permitted: '/mnt/linux_share/workspace/qemu-inhap/build-ohos/pyvenv/lib/python3.11/site-packages/setuptools-68.0.0.dist-info/INSTALLER24j_7kwp.tmp'
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/usr/lib64/python3.11/ensurepip/__main__.py", line 5, in <module>
+    sys.exit(ensurepip._main())
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/ensurepip/__init__.py", line 286, in _main
+    return _bootstrap(
+           ^^^^^^^^^^^
+  File "/usr/lib64/python3.11/ensurepip/__init__.py", line 202, in _bootstrap
+    return _run_pip([*args, *_PACKAGE_NAMES], additional_paths)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/ensurepip/__init__.py", line 103, in _run_pip
+    return subprocess.run(cmd, check=True).returncode
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/mnt/linux_share/workspace/qemu-inhap/build-ohos/pyvenv/bin/python3', '-W', 'ignore::DeprecationWarning', '-c', '\nimport runpy\nimport sys\nsys.path = [\'/tmp/tmpm6hf0xvn/pip-23.3.1-py3-none-any.whl\', \'/tmp/tmpm6hf0xvn/setuptools-68.0.0-py3-none-any.whl\'] + sys.path\nsys.argv[1:] = [\'install\', \'--no-cache-dir\', \'--no-index\', \'--find-links\', \'/tmp/tmpm6hf0xvn\', \'--upgrade\', \'setuptools\', \'pip\']\nrunpy.run_module("pip", run_name="__main__", alter_sys=True)\n']' returned non-zero exit status 1.
+
+============================
+
+*** Ouch! ***
+
+VENV creation subprocess failed. 
+
+
+
+ERROR: python venv creation failed
+

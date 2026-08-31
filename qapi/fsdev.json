@@ -1,0 +1,58 @@
+# -*- Mode: Python -*-
+# vim: filetype=python
+#
+# This work is licensed under the terms of the GNU GPL, version 2 or later.
+# See the COPYING file in the top-level directory.
+
+{ 'include': 'common.json' }
+
+##
+# @FsdevAdd:
+#
+# Arguments for dynamically adding a 9p filesystem export at runtime,
+# complementing the -fsdev command line option for hotplugged
+# virtio-9p devices.
+#
+# @id: identifier of the fsdev; referenced by device_add as
+#      -device virtio-9p-pci,fsdev=@id
+# @fsdriver: filesystem driver.  Only "local" is supported for now;
+#            defaults to "local" when omitted.
+# @path: host path exported to the guest
+#         (required for the "local" driver)
+# @security-model: security model for the "local" driver
+#                 ("passthrough", "mapped", "mapped-xattr" or
+#                 "mapped-file")
+# @readonly: export the share read-only
+# @writeout: writeout policy ("immediate")
+#
+# Since: 11.1
+##
+{ 'struct': 'FsdevAdd',
+  'data': { 'id': 'str',
+            '*fsdriver': 'str',
+            '*path': 'str',
+            '*security-model': 'str',
+            '*readonly': 'bool',
+            '*writeout': 'str' } }
+
+##
+# @fsdev-add:
+#
+# Add a 9p filesystem export at runtime.
+# A virtio-9p device can then be hotplugged against it via device_add.
+#
+# Features:
+# @unstable: This command is experimental and may change.
+#
+# Since: 11.1
+#
+# .. qmp-example::
+#
+#     -> { "execute": "fsdev-add",
+#          "arguments": { "id": "fsdev0",
+#                         "path": "/data/workspace",
+#                         "security-model": "mapped-file" } }
+#     <- { "return": {} }
+##
+{ 'command': 'fsdev-add', 'data': 'FsdevAdd', 'boxed': true,
+  'features': ['unstable'] }

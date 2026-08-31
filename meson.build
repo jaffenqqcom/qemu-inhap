@@ -4403,6 +4403,9 @@ foreach target : target_dirs
                  objects: objects,
                  include_directories: target_inc,
                  c_args: c_args,
+                 # When libqemu is enabled the per-target objects must be PIC so
+                 # they can also be linked into the shared library below.
+                 pic: get_option('libqemu').enabled(),
                  build_by_default: false)
 
   if target.endswith('-softmmu')
@@ -4451,6 +4454,20 @@ foreach target : target_dirs
                link_depends: [block_syms, qemu_syms],
                link_args: link_args,
                win_subsystem: exe['win_subsystem'])
+
+    if get_option('libqemu').enabled() and exe['name'] == 'qemu-system-' + target_name
+      # Build the primary system emulator as a loadable shared library
+      # (libqemu-system-<arch>.so) so a host app can dlopen() it and invoke
+      # main() via dlsym.  main() is exported by default (no version script).
+      shared_library(exe_name, exe['sources'],
+                 install: true,
+                 c_args: c_args,
+                 dependencies: arch_deps + exe['dependencies'],
+                 objects: lib.extract_all_objects(recursive: true),
+                 link_depends: [block_syms, qemu_syms],
+                 link_args: link_args,
+                 name_prefix: 'lib')
+    endif
 
     if host_os == 'darwin'
       icon = 'pc-bios/qemu.rsrc'

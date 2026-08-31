@@ -17,6 +17,7 @@
 #include "qemu/config-file.h"
 #include "qemu/error-report.h"
 #include "qemu/option.h"
+#include "qapi/qapi-commands-fsdev.h"
 
 /*
  * A table to store the various file systems and their callback operations.
@@ -179,4 +180,34 @@ FsDriverEntry *get_fsdev_fsentry(char *id)
         }
     }
     return NULL;
+}
+
+void qmp_fsdev_add(FsdevAdd *add, Error **errp)
+{
+    QemuOpts *opts;
+    const char *fsdriver = add->fsdriver ? add->fsdriver : "local";
+
+    opts = qemu_opts_create(qemu_find_opts("fsdev"), add->id, 1, errp);
+    if (!opts) {
+        return;
+    }
+    qemu_opt_set(opts, "fsdriver", fsdriver, errp);
+    if (add->path) {
+        qemu_opt_set(opts, "path", add->path, errp);
+    }
+    if (add->security_model) {
+        qemu_opt_set(opts, "security_model", add->security_model, errp);
+    }
+    if (add->has_readonly) {
+        qemu_opt_set_bool(opts, "readonly", add->readonly, errp);
+    }
+    if (add->writeout) {
+        qemu_opt_set(opts, "writeout", add->writeout, errp);
+    }
+    if (qemu_fsdev_add(opts, errp) < 0) {
+        qemu_opts_del(opts);
+        return;
+    }
+    info_report("fsdev-add: id=%s fsdriver=%s path=%s", add->id, fsdriver,
+                add->path ? add->path : "(null)");
 }

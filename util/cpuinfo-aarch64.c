@@ -72,7 +72,10 @@ unsigned __attribute__((constructor)) cpuinfo_init(void)
 
     unsigned long hwcap2 = qemu_getauxval(AT_HWCAP2);
     info |= (hwcap2 & HWCAP2_BTI ? CPUINFO_BTI : 0);
+#ifdef HWCAP2_CSSC
+    /* HWCAP2_CSSC is a newer CPU feature bit; not all musl sysroots define it. */
     info |= (hwcap2 & HWCAP2_CSSC ? CPUINFO_CSSC : 0);
+#endif
 #endif
 #ifdef CONFIG_DARWIN
     info |= sysctl_for_bool("hw.optional.arm.FEAT_LSE") * CPUINFO_LSE;

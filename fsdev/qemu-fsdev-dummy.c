@@ -12,10 +12,17 @@
  */
 
 #include "qemu/osdep.h"
+#include "qapi/error.h"
 #include "qemu-fsdev.h"
 #include "qemu/config-file.h"
+#include "qapi/qapi-commands-fsdev.h"
 
 int qemu_fsdev_add(QemuOpts *opts, Error **errp)
 {
     return 0;
+}
+
+void qmp_fsdev_add(FsdevAdd *add, Error **errp)
+{
+    error_setg(errp, "9p filesystem support is not compiled in");
 }
