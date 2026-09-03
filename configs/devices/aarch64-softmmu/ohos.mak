@@ -45,6 +45,14 @@ CONFIG_VIRTIO_SERIAL=y
 CONFIG_VIRTFS=y
 CONFIG_VIRTIO_9P=y
 
+# vhost-user: shared-memory transport for virtio-fs (PoC: replace 9p for the
+# performance-critical work-directory share). CONFIG_VHOST_USER is a
+# config-host macro produced by configure --enable-vhost-user; VHOST_USER_FS
+# selects the vhost-user-fs-pci frontend device, paired with an external
+# virtiofsd backend.
+CONFIG_VHOST_USER=y
+CONFIG_VHOST_USER_FS=y
+
 # pcie-root-port: provides a hotpluggable PCIe bus so runtime device_add of a
 # virtio-9p work-directory mount works (the pcie.0 root bus has no hotplug
 # handler). Without it QMP device_add fails with "Bus 'pcie.0' does not support

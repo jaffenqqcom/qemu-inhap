@@ -14,15 +14,18 @@ glib = dependency('glib-2.0')
 vhost_user = static_library('vhost-user',
                             files('libvhost-user.c'),
                             dependencies: threads,
-                            c_args: '-D_GNU_SOURCE')
+                            c_args: '-D_GNU_SOURCE',
+                            build_by_default: false)
 
 executable('link-test', files('link-test.c'),
-           link_whole: vhost_user)
+           link_whole: vhost_user,
+           build_by_default: false)
 
 vhost_user_glib = static_library('vhost-user-glib',
                                  files('libvhost-user-glib.c'),
                                  link_with: vhost_user,
-                                 dependencies: glib)
+                                 dependencies: glib,
+                                 build_by_default: false)
 
 vhost_user_dep = declare_dependency(link_with: vhost_user_glib,
                                     dependencies: glib,

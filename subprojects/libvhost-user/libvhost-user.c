@@ -36,7 +36,11 @@
  * with older linux headers. Must appear before
  * <linux/vhost.h> below.
  */
+#ifdef __OHOS__
+#include <linux/virtio_config.h>
+#else
 #include "standard-headers/linux/virtio_config.h"
+#endif
 
 #if defined(__linux__)
 #include <sys/syscall.h>

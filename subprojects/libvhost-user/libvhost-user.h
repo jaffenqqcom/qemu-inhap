@@ -20,7 +20,18 @@
 #include <poll.h>
 #include <linux/vhost.h>
 #include <pthread.h>
+#ifdef __OHOS__
+/*
+ * On OHOS the bionic sysroot ships _UAPI_-guarded copies of the virtio UAPI
+ * headers whose guards differ from the bundled standard-headers (_LINUX_),
+ * so both copies get compiled and every struct/typedef redefinition errors
+ * out. Use the system virtio_ring.h consistently here so only the bionic
+ * copy is active.
+ */
+#include <linux/virtio_ring.h>
+#else
 #include "standard-headers/linux/virtio_ring.h"
+#endif
 
 /* Based on qemu/hw/virtio/vhost-user.c */
 #define VHOST_USER_F_PROTOCOL_FEATURES 30
