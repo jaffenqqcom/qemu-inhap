@@ -23,7 +23,8 @@ timeout 900 "$QEMU_OHOS_SRC/configure" \
   --disable-sdl --disable-gtk --disable-vnc --disable-curses \
   --disable-modules --disable-kvm --disable-hvf --disable-whpx \
   --disable-multiprocess --disable-vfio-user-server --disable-seccomp --disable-bzip2 \
-  --disable-vhost-user --disable-vhost-kernel --disable-vhost-net --disable-vhost-vdpa \
+  --enable-vhost-user \
+  --disable-vhost-kernel --disable-vhost-net --disable-vhost-vdpa \
   --disable-vhost-user-blk-server --disable-vhost-crypto \
   --disable-libusb \
   --enable-slirp \

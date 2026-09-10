@@ -52,7 +52,13 @@ static void *qemu_default_main(void *opaque)
     bql_unlock();
     replay_mutex_unlock();
 
-    exit(status);
+    /*
+     * Embedded (dlopen) use: return the status instead of exit() so the caller
+     * regains control after the guest shuts down (the OHOS appspawn hook aborts
+     * the process on a bare exit(0), and the host wants to relaunch the machine
+     * with a new root boot).
+     */
+    return (void *)(intptr_t)status;
 }
 
 int (*qemu_main)(void);
@@ -90,7 +96,7 @@ int main(int argc, char **argv)
                            qemu_default_main, NULL, QEMU_THREAD_DETACHED);
         return qemu_main();
     } else {
-        qemu_default_main(NULL);
-        g_assert_not_reached();
+        int status = (int)(intptr_t)qemu_default_main(NULL);
+        return status;
     }
 }
